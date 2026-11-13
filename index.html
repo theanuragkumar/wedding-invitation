@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anurag & Lakshmi — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi:ital@0;1&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="lang" role="group" aria-label="Language">
+  <button type="button" data-lang="en" class="on">English</button>
+  <button type="button" data-lang="hi">हिन्दी</button>
+</div>
+
+<!-- ENVELOPE SCREEN -->
+<section id="intro" class="intro">
+  <p class="intro-hint" data-i18n="introHint">You have received an invitation</p>
+  <div class="envelope" id="envelope" role="button" tabindex="0" data-i18n-aria="openAria" aria-label="Open wedding invitation">
+    <div class="env-back"></div>
+    <div class="env-letter"><span data-i18n="names2">Anurag &amp; Lakshmi</span></div>
+    <div class="env-front"></div>
+    <div class="env-flap"></div>
+    <div class="seal">A&amp;L</div>
+  </div>
+  <p class="intro-tap" data-i18n="tap">Tap the envelope to open</p>
+</section>
+
+<!-- CARD -->
+<main id="card" class="card hidden">
+
+  <header class="hero">
+    <p class="om">॥ श्री गणेशाय नमः ॥</p>
+    <p class="small-caps" data-i18n="blessing">With the blessings of Lord Ganesha and together with their families, you're invited to celebrate the marriage of</p>
+    <figure class="couple"><img src="assets/couple.png" alt="Anurag and Lakshmi" width="1100" height="1473"></figure>
+    <h1 class="names script" data-i18n="names">Anurag <span>&amp;</span> Lakshmi</h1>
+    <div class="divider"><i></i><b>❖</b><i></i></div>
+    <p class="invite-text" data-i18n="invite">Anurag and Lakshmi joyfully invite you to share in their happiness and bless them as they begin their new journey together as husband and wife. Your presence and warm wishes will make these celebrations truly memorable for both families.</p>
+    <p class="hashtag">#Anu&amp;Lak</p>
+  </header>
+
+  <section class="block">
+    <p class="eyebrow" data-i18n="saveDate">Save the Date</p>
+    <h2 data-i18n="weddingDay">The Wedding Day</h2>
+    <p class="muted" data-i18n="scratchSub">Scratch the card to reveal the date</p>
+
+    <div class="scratch-wrap" id="scratchWrap">
+      <div class="scratch-under">
+        <small data-i18n="weddingDate">The Wedding Date</small>
+        <strong data-i18n="dateBig">2 December 2026</strong>
+        <span data-i18n="dateSub">Wednesday · 18:00</span>
+      </div>
+      <canvas id="scratch" aria-label="Scratch card"></canvas>
+      <div class="scratch-hint" data-i18n="scratchHint">✦ Scratch here ✦</div>
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div><b id="cd-d">--</b><span data-i18n="days">Days</span></div>
+      <div><b id="cd-h">--</b><span data-i18n="hours">Hours</span></div>
+      <div><b id="cd-m">--</b><span data-i18n="minutes">Minutes</span></div>
+      <div><b id="cd-s">--</b><span data-i18n="seconds">Seconds</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow" data-i18n="celebrations">Celebrations</p>
+    <h2 data-i18n="order">Order of the Day</h2>
+
+    <article class="event ev-haldi">
+      <h3 data-i18n="haldi">Haldi &amp; Mehdi</h3>
+      <p class="when" data-i18n="haldiWhen">Tuesday, 1 December 2026 at 17:00</p>
+      <p class="where"><strong data-i18n="residences">At Respective Residences</strong></p>
+      <p class="addr" data-i18n="haldiAddr"><b>Groom's Residence:</b> E-35, Railway Quarter, Six Banglow, Igatpuri<br>
+         <b>Bride's Residence:</b> Satpur, Nashik</p>
+      <div class="btns">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Six+Banglow+Igatpuri" data-i18n="groomDir">Groom's directions</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Satpur+Nashik" data-i18n="brideDir">Bride's directions</a>
+        <a class="btn ghost" id="gcal-haldi" target="_blank" rel="noopener" href="#" data-i18n="gcal">📅 Google Calendar</a>
+      </div>
+    </article>
+
+    <article class="event ev-wed">
+      <h3 data-i18n="ceremony">Wedding Ceremony</h3>
+      <p class="when" data-i18n="ceremonyWhen">Wednesday, 2 December 2026 at 18:00</p>
+      <p class="where"><strong data-i18n="venue">Chandrabhaga Lawns</strong></p>
+      <p class="addr" data-i18n="road">Trimbakeshwar Road</p>
+      <div class="btns">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Chandrabhaga+Lawns+Trimbakeshwar+Road+Nashik" data-i18n="getDir">Get directions</a>
+        <a class="btn ghost" id="gcal-wedding" target="_blank" rel="noopener" href="#" data-i18n="gcal">📅 Google Calendar</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="block quote-block">
+    <p class="eyebrow" data-i18n="awaiting">Awaiting Your Presence</p>
+    <h2 class="script big" data-i18n="blessings">With Love &amp; Blessings</h2>
+    <blockquote data-i18n="quote">“With hearts full of joy, we await your gracious presence to make our celebration complete.”</blockquote>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow" data-i18n="where">Where We Celebrate</p>
+    <h2 data-i18n="venue">Chandrabhaga Lawns</h2>
+    <p class="muted" data-i18n="road">Trimbakeshwar Road</p>
+    <button class="btn" id="showMap">📍 Show the map</button>
+    <p class="tiny" data-i18n="mapNote">Opens Google Maps inside this page</p>
+    <div class="map" id="map" hidden></div>
+    <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Chandrabhaga+Lawns+Trimbakeshwar+Road+Nashik" data-i18n="getDirArrow">Get directions ↗</a>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow" data-i18n="good">Good to Know</p>
+    <h2 data-i18n="details">Details</h2>
+    <p data-i18n="queries">For queries, contact</p>
+    <p class="contact"><strong data-i18n="anurag">Anurag</strong> · <a href="tel:+918540999094">8540999094</a></p>
+  </section>
+
+  <footer>
+    <p class="script" data-i18n="names2">Anurag &amp; Lakshmi</p>
+    <p data-i18n="dateBig">2 December 2026</p>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
