@@ -426,3 +426,24 @@ blockquote{position:relative;padding:0 .5rem}
 .err{color:#a5384f;font-size:.85rem;margin:-.4rem 0 0 .6rem;font-family:'Jost','Tiro Devanagari Hindi',sans-serif}
 .err[hidden]{display:none}
 .choice label{position:relative}
+
+/* RSVP — compact on phones */
+@media (max-width:600px){
+  .rsvp form{max-width:320px;gap:.6rem;margin-top:.8rem}
+  .rsvp input[type=text],.rsvp textarea{font-size:.9rem;padding:.55rem .85rem;border-radius:14px}
+  .choice{gap:.4rem}
+  .choice label{flex:1 1 120px}
+  .choice span{padding:.5rem .4rem;font-size:.82rem}
+  .guests{padding:.25rem .3rem .25rem .85rem;font-size:.85rem}
+  .stepper{gap:.5rem}
+  .stepper button{width:30px;height:30px;font-size:1.1rem}
+  .stepper output{font-size:1.05rem}
+  .rsvp textarea{rows:2;min-height:0;height:3.2rem}
+  .rsvp .btn{padding:.6rem 1.2rem;font-size:.8rem}
+  .rsvp h2{font-size:1.5rem}
+}
+
+/* Map height on phones */
+@media (max-width:600px){
+  .map iframe{height:200px}
+}
