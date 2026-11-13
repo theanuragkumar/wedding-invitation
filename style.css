@@ -452,3 +452,6 @@ blockquote{position:relative;padding:0 .5rem}
 .music.playing .w1{animation:wave 1.2s ease-in-out infinite}
 .music.playing .w2{animation:wave 1.2s ease-in-out .25s infinite}
 @keyframes wave{0%,100%{opacity:.35}50%{opacity:1}}
+
+/* gap between couple photo and names */
+.hero .names{margin-top:2.2rem}
