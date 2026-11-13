@@ -101,13 +101,13 @@ const pair = l => currentSide === 'bride' ? [NM[l].b, NM[l].g] : [NM[l].g, NM[l]
 Object.assign(I18N.en, {
   names: () => { const [a, b] = pair('en'); return `${a} <span>&amp;</span> ${b}`; },
   names2: () => { const [a, b] = pair('en'); return `${a} &amp; ${b}`; },
-  hash: () => currentSide === 'bride' ? '#Lak&amp;Anu' : '#Anu&amp;Lak',
+  hash: () => 'Two hearts, one beautiful journey',
   invite: () => { const [a, b] = pair('en'); return `${a} and ${b} joyfully invite you to share in their happiness and bless them as they begin their new journey together as husband and wife. Your presence and warm wishes will make these celebrations truly memorable for both families.`; }
 });
 Object.assign(I18N.hi, {
   names: () => { const [a, b] = pair('hi'); return `${a} <span>&amp;</span> ${b}`; },
   names2: () => { const [a, b] = pair('hi'); return `${a} &amp; ${b}`; },
-  hash: () => currentSide === 'bride' ? '#Lak&amp;Anu' : '#Anu&amp;Lak',
+  hash: () => 'दो दिल, एक खूबसूरत सफ़र',
   invite: () => { const [a, b] = pair('hi'); return `${a} और ${b} अपनी खुशियों में सहभागी बनने और पति-पत्नी के रूप में नए जीवन की शुरुआत पर उन्हें आशीर्वाद देने के लिए आपको हर्षपूर्वक आमंत्रित करते हैं। आपकी उपस्थिति और शुभकामनाएँ दोनों परिवारों के लिए इन उत्सवों को सचमुच यादगार बना देंगी।`; }
 });
 Object.assign(I18N.en, {
