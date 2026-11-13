@@ -455,3 +455,16 @@ blockquote{position:relative;padding:0 .5rem}
 
 /* gap between couple photo and names */
 .hero .names{margin-top:2.2rem}
+
+/* ================= STICKY MENU ================= */
+.nav{position:fixed;left:50%;bottom:14px;transform:translateX(-50%) translateY(120%);z-index:60;
+  display:flex;gap:2px;padding:5px;border-radius:999px;max-width:calc(100% - 24px);
+  background:rgba(251,245,233,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--gold);box-shadow:0 8px 24px rgba(110,80,40,.28);
+  opacity:0;pointer-events:none;transition:transform .6s ease,opacity .6s ease}
+.card:not(.hidden) ~ .nav{transform:translateX(-50%);opacity:1;pointer-events:auto;transition-delay:1.2s}
+.nav a{padding:.5rem .95rem;border-radius:999px;text-decoration:none;white-space:nowrap;
+  font-family:'Jost','Tiro Devanagari Hindi',sans-serif;font-size:.82rem;letter-spacing:.04em;color:var(--gold-d);transition:.25s}
+.nav a.on{background:linear-gradient(135deg,#c4566b,#9a3a52);color:#fff8ea;box-shadow:0 3px 8px rgba(154,58,82,.35)}
+.card{padding-bottom:5.5rem}
+@media (max-width:380px){.nav a{padding:.5rem .7rem;font-size:.76rem}}

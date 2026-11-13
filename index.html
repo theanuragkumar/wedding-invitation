@@ -48,7 +48,7 @@
 <!-- CARD -->
 <main id="card" class="card hidden">
 
-  <header class="hero">
+  <header class="hero" id="sec-top">
     <p class="om">॥ श्री गणेशाय नमः ॥</p>
     <p class="small-caps" data-i18n="blessing">With the blessings of Lord Ganesha and together with their families, you're invited to celebrate the marriage of</p>
     <figure class="couple"><img src="assets/couple.png" alt="Lakshmi and Anurag" width="1100" height="1473"></figure>
@@ -58,7 +58,7 @@
     <p class="hashtag" data-i18n="hash">Two hearts, one beautiful journey</p>
   </header>
 
-  <section class="block">
+  <section class="block" id="sec-date">
     <p class="eyebrow" data-i18n="saveDate">Save the Date</p>
     <h2 data-i18n="weddingDay">The Wedding Day</h2>
     <p class="muted" data-i18n="scratchSub">Scratch the card to reveal the date</p>
@@ -82,7 +82,7 @@
     </div>
   </section>
 
-  <section class="block">
+  <section class="block" id="sec-events">
     <p class="eyebrow" data-i18n="celebrations">Celebrations</p>
     <h2 data-i18n="order">Order of the Day</h2>
 
@@ -113,7 +113,7 @@
     <blockquote data-i18n="quote">“With hearts full of joy, we await your gracious presence to make our celebration complete.”</blockquote>
   </section>
 
-  <section class="block">
+  <section class="block" id="sec-map">
     <p class="eyebrow" data-i18n="where">Where We Celebrate</p>
     <h2 data-i18n="venue">Chandrabhaga Lawns</h2>
     <p class="muted" data-i18n="road">Trimbakeshwar Road</p>
@@ -128,6 +128,13 @@
     <p data-i18n="dateBig">2 December 2026</p>
   </footer>
 </main>
+
+<nav class="nav" id="nav" aria-label="Sections">
+  <a href="#sec-top" data-sec="sec-top" class="on"><span data-i18n="navHome">Home</span></a>
+  <a href="#sec-date" data-sec="sec-date"><span data-i18n="navDate">Date</span></a>
+  <a href="#sec-events" data-sec="sec-events"><span data-i18n="navEvents">Events</span></a>
+  <a href="#sec-map" data-sec="sec-map"><span data-i18n="navMap">Map</span></a>
+</nav>
 
 <script src="script.js"></script>
 </body>

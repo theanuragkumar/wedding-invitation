@@ -112,9 +112,11 @@ Object.assign(I18N.hi, {
 });
 Object.assign(I18N.en, {
     skip: 'Skip — reveal the date',
+    navHome: 'Home', navDate: 'Date', navEvents: 'Events', navMap: 'Map',
 });
 Object.assign(I18N.hi, {
     skip: 'छोड़ें — तिथि दिखाएँ',
+    navHome: 'मुख्य', navDate: 'तिथि', navEvents: 'कार्यक्रम', navMap: 'नक्शा',
 });
 let currentLang = 'en';
 try {
@@ -455,4 +457,27 @@ document.getElementById('skipScratch').addEventListener('click', () => { if (win
     requestAnimationFrame(frame);
   }
   frame();
+})();
+
+/* ---------- Sticky menu ---------- */
+(function () {
+  const links = [...document.querySelectorAll('#nav a')];
+  const secs = links.map(a => document.getElementById(a.dataset.sec));
+  const set = id => links.forEach(a => a.classList.toggle('on', a.dataset.sec === id));
+  function update() {
+    const y = innerHeight * 0.4;
+    let cur = secs[0].id;
+    secs.forEach(s => { if (s.getBoundingClientRect().top <= y) cur = s.id; });
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = secs[secs.length - 1].id;
+    set(cur);
+  }
+  addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  links.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.getElementById(a.dataset.sec);
+    const top = el.getBoundingClientRect().top + scrollY - 14;
+    scrollTo({ top, behavior: 'smooth' });
+  }));
+  update();
 })();
