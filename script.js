@@ -467,12 +467,13 @@ document.getElementById('skipScratch').addEventListener('click', () => { if (win
   function update() {
     const y = innerHeight * 0.4;
     let cur = secs[0].id;
-    secs.forEach(s => { if (s.getBoundingClientRect().top <= y) cur = s.id; });
-    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = secs[secs.length - 1].id;
+    if (scrollY > 80) secs.forEach(s => { if (s.getBoundingClientRect().top <= y) cur = s.id; });
+    if (scrollY > 80 && innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = secs[secs.length - 1].id;
     set(cur);
   }
   addEventListener('scroll', update, { passive: true });
   addEventListener('resize', update);
+  setInterval(update, 400);
   links.forEach(a => a.addEventListener('click', e => {
     e.preventDefault();
     const el = document.getElementById(a.dataset.sec);
