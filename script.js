@@ -14,14 +14,14 @@ const store = {
 /* ---------- Language (English / Hindi) ---------- */
 const I18N = {
   en: {
-    title: 'Anurag & Lakshmi — Wedding Invitation',
+    title: 'Lakshmi & Anurag — Wedding Invitation',
     introHint: 'You have received an invitation',
     openAria: 'Open wedding invitation',
     tap: 'Tap the envelope to open',
     blessing: "With the blessings of Lord Ganesha and together with their families, you're invited to celebrate the marriage of",
-    names: 'Anurag <span>&amp;</span> Lakshmi',
-    names2: 'Anurag &amp; Lakshmi',
-    invite: 'Anurag and Lakshmi joyfully invite you to share in their happiness and bless them as they begin their new journey together as husband and wife. Your presence and warm wishes will make these celebrations truly memorable for both families.',
+    names: 'Lakshmi <span>&amp;</span> Anurag',
+    names2: 'Lakshmi &amp; Anurag',
+    invite: 'Lakshmi and Anurag joyfully invite you to share in their happiness and bless them as they begin their new journey together as husband and wife. Your presence and warm wishes will make these celebrations truly memorable for both families.',
     saveDate: 'Save the Date',
     weddingDay: 'The Wedding Day',
     scratchSub: 'Scratch the card to reveal the date',
@@ -35,8 +35,6 @@ const I18N = {
     haldi: 'Haldi &amp; Mehdi',
     haldiWhen: 'Tuesday, 1 December 2026 at 17:00 onwards',
     residences: 'At Respective Residences',
-    haldiAddr: "<b>Groom's Residence:</b> E-35, Railway Quarter, Six Banglow, Igatpuri<br><b>Bride's Residence:</b> Satpur, Nashik",
-    groomDir: "Groom's directions", brideDir: "Bride's directions",
     gcal: '📅 Google Calendar',
     ceremony: 'Wedding Ceremony',
     ceremonyWhen: 'Wednesday, 2 December 2026 at 18:00 onwards',
@@ -56,14 +54,14 @@ const I18N = {
     anurag: 'Anurag'
   },
   hi: {
-    title: 'अनुराग और लक्ष्मी — विवाह निमंत्रण',
+    title: 'लक्ष्मी और अनुराग — विवाह निमंत्रण',
     introHint: 'आपको एक निमंत्रण प्राप्त हुआ है',
     openAria: 'विवाह निमंत्रण खोलें',
     tap: 'खोलने के लिए लिफ़ाफ़े पर टैप करें',
     blessing: 'भगवान श्री गणेश के आशीर्वाद एवं अपने परिवारों के साथ, आपको इस शुभ विवाह उत्सव में सादर आमंत्रित करते हैं',
-    names: 'अनुराग <span>&amp;</span> लक्ष्मी',
-    names2: 'अनुराग &amp; लक्ष्मी',
-    invite: 'अनुराग और लक्ष्मी अपनी खुशियों में सहभागी बनने और पति-पत्नी के रूप में नए जीवन की शुरुआत पर उन्हें आशीर्वाद देने के लिए आपको हर्षपूर्वक आमंत्रित करते हैं। आपकी उपस्थिति और शुभकामनाएँ दोनों परिवारों के लिए इन उत्सवों को सचमुच यादगार बना देंगी।',
+    names: 'लक्ष्मी <span>&amp;</span> अनुराग',
+    names2: 'लक्ष्मी &amp; अनुराग',
+    invite: 'लक्ष्मी और अनुराग अपनी खुशियों में सहभागी बनने और पति-पत्नी के रूप में नए जीवन की शुरुआत पर उन्हें आशीर्वाद देने के लिए आपको हर्षपूर्वक आमंत्रित करते हैं। आपकी उपस्थिति और शुभकामनाएँ दोनों परिवारों के लिए इन उत्सवों को सचमुच यादगार बना देंगी।',
     saveDate: 'तारीख़ याद रखें',
     weddingDay: 'विवाह का दिन',
     scratchSub: 'तिथि देखने के लिए कार्ड को स्क्रैच करें',
@@ -77,8 +75,6 @@ const I18N = {
     haldi: 'हल्दी और मेहंदी',
     haldiWhen: 'मंगलवार, 1 दिसंबर 2026 को सायं 5:00 बजे से',
     residences: 'अपने-अपने निवास पर',
-    haldiAddr: '<b>वर पक्ष का निवास:</b> ई-35, रेलवे क्वार्टर, सिक्स बंगलो, इगतपुरी<br><b>वधू पक्ष का निवास:</b> सातपुर, नाशिक',
-    groomDir: 'वर पक्ष के लिए दिशा-निर्देश', brideDir: 'वधू पक्ष के लिए दिशा-निर्देश',
     gcal: '📅 गूगल कैलेंडर',
     ceremony: 'विवाह समारोह',
     ceremonyWhen: 'बुधवार, 2 दिसंबर 2026 को सायं 6:00 बजे से',
@@ -99,50 +95,26 @@ const I18N = {
   }
 };
 /* ---------- Names / addresses ---------- */
-const currentSide = 'groom';
+const currentSide = 'bride';
 const NM = { en: { g: 'Anurag', b: 'Lakshmi' }, hi: { g: 'अनुराग', b: 'लक्ष्मी' } };
 const pair = l => currentSide === 'bride' ? [NM[l].b, NM[l].g] : [NM[l].g, NM[l].b];
 Object.assign(I18N.en, {
   names: () => { const [a, b] = pair('en'); return `${a} <span>&amp;</span> ${b}`; },
   names2: () => { const [a, b] = pair('en'); return `${a} &amp; ${b}`; },
   hash: () => currentSide === 'bride' ? '#Lak&amp;Anu' : '#Anu&amp;Lak',
-  invite: () => { const [a, b] = pair('en'); return `${a} and ${b} joyfully invite you to share in their happiness and bless them as they begin their new journey together as husband and wife. Your presence and warm wishes will make these celebrations truly memorable for both families.`; },
-  haldiAddr: () => {
-    const g = "<b>Groom's Residence:</b> E-35, Railway Quarter, Six Banglow, Igatpuri";
-    const b = "<b>Bride's Residence:</b> Satpur, Nashik";
-    return currentSide === 'bride' ? b + '<br>' + g : g + '<br>' + b;
-  }
+  invite: () => { const [a, b] = pair('en'); return `${a} and ${b} joyfully invite you to share in their happiness and bless them as they begin their new journey together as husband and wife. Your presence and warm wishes will make these celebrations truly memorable for both families.`; }
 });
 Object.assign(I18N.hi, {
   names: () => { const [a, b] = pair('hi'); return `${a} <span>&amp;</span> ${b}`; },
   names2: () => { const [a, b] = pair('hi'); return `${a} &amp; ${b}`; },
   hash: () => currentSide === 'bride' ? '#Lak&amp;Anu' : '#Anu&amp;Lak',
-  invite: () => { const [a, b] = pair('hi'); return `${a} और ${b} अपनी खुशियों में सहभागी बनने और पति-पत्नी के रूप में नए जीवन की शुरुआत पर उन्हें आशीर्वाद देने के लिए आपको हर्षपूर्वक आमंत्रित करते हैं। आपकी उपस्थिति और शुभकामनाएँ दोनों परिवारों के लिए इन उत्सवों को सचमुच यादगार बना देंगी।`; },
-  haldiAddr: () => {
-    const g = '<b>वर पक्ष का निवास:</b> ई-35, रेलवे क्वार्टर, सिक्स बंगलो, इगतपुरी';
-    const b = '<b>वधू पक्ष का निवास:</b> सातपुर, नाशिक';
-    return currentSide === 'bride' ? b + '<br>' + g : g + '<br>' + b;
-  }
+  invite: () => { const [a, b] = pair('hi'); return `${a} और ${b} अपनी खुशियों में सहभागी बनने और पति-पत्नी के रूप में नए जीवन की शुरुआत पर उन्हें आशीर्वाद देने के लिए आपको हर्षपूर्वक आमंत्रित करते हैं। आपकी उपस्थिति और शुभकामनाएँ दोनों परिवारों के लिए इन उत्सवों को सचमुच यादगार बना देंगी।`; }
 });
 Object.assign(I18N.en, {
     skip: 'Skip — reveal the date',
-    rsvpEyebrow: 'RSVP', rsvpTitle: 'Will You Join Us?', rsvpSub: 'Please let us know so we can plan',
-    rsvpName: 'Your name', rsvpNameErr: 'Please enter your name',
-    rsvpYes: 'Joyfully accept', rsvpNo: 'Regretfully decline',
-    rsvpGuests: 'Number of guests', rsvpNote: 'A message for the couple (optional)',
-    rsvpSend: '💬 Send RSVP on WhatsApp', rsvpHelp: 'Opens WhatsApp with your reply ready to send',
-    rsvpMsgYes: (n, g, note) => `Hello! This is ${n}. I will be delighted to attend the wedding of Anurag & Lakshmi on 2 December 2026. Guests: ${g}.` + (note ? `\n\n${note}` : ''),
-    rsvpMsgNo: (n, g, note) => `Hello! This is ${n}. I regret that I am unable to attend the wedding of Anurag & Lakshmi on 2 December 2026, but I send my love and blessings.` + (note ? `\n\n${note}` : '')
 });
 Object.assign(I18N.hi, {
     skip: 'छोड़ें — तिथि दिखाएँ',
-    rsvpEyebrow: 'कृपया उत्तर दें', rsvpTitle: 'क्या आप हमारे साथ होंगे?', rsvpSub: 'कृपया हमें बताइए ताकि हम व्यवस्था कर सकें',
-    rsvpName: 'आपका नाम', rsvpNameErr: 'कृपया अपना नाम लिखें',
-    rsvpYes: 'सहर्ष स्वीकार', rsvpNo: 'खेद सहित असमर्थ',
-    rsvpGuests: 'अतिथियों की संख्या', rsvpNote: 'वर-वधू के लिए संदेश (वैकल्पिक)',
-    rsvpSend: '💬 व्हाट्सऐप पर उत्तर भेजें', rsvpHelp: 'व्हाट्सऐप में आपका उत्तर तैयार खुलेगा',
-    rsvpMsgYes: (n, g, note) => `नमस्ते! मैं ${n} हूँ। मैं 2 दिसंबर 2026 को अनुराग और लक्ष्मी के विवाह में सहर्ष उपस्थित रहूँगा/रहूँगी। अतिथि: ${g}।` + (note ? `\n\n${note}` : ''),
-    rsvpMsgNo: (n, g, note) => `नमस्ते! मैं ${n} हूँ। खेद है कि मैं 2 दिसंबर 2026 को अनुराग और लक्ष्मी के विवाह में उपस्थित नहीं हो पाऊँगा/पाऊँगी, परंतु मेरा प्रेम और आशीर्वाद आपके साथ है।` + (note ? `\n\n${note}` : '')
 });
 let currentLang = 'en';
 try {
@@ -260,15 +232,15 @@ tick(); setInterval(tick, 1000);
 /* ---------- Calendar links ---------- */
 const EVENTS = {
   wedding: {
-    title: 'Anurag & Lakshmi — Wedding Ceremony',
+    title: 'Lakshmi & Anurag — Wedding Ceremony',
     start: '20261202T123000Z', end: '20261202T153000Z', // 18:00–21:00 IST
     location: 'Chandrabhaga Lawns, Trimbakeshwar Road, Nashik',
-    details: 'Wedding ceremony of Anurag & Lakshmi.'
+    details: 'Wedding ceremony of Lakshmi & Anurag.'
   },
   haldi: {
-    title: 'Anurag & Lakshmi — Haldi & Mehdi',
+    title: 'Lakshmi & Anurag — Haldi & Mehdi',
     start: '20261201T113000Z', end: '20261201T143000Z', // 17:00–20:00 IST
-    location: "Groom's: E-35, Railway Quarter, Six Banglow, Igatpuri | Bride's: Satpur, Nashik",
+    location: 'At respective residences',
     details: 'Haldi & Mehdi at respective residences.'
   }
 };
@@ -364,13 +336,17 @@ setLang(currentLang);
 (function () {
   const bgm = document.getElementById('bgm');
   const btn = document.getElementById('musicBtn');
+  const SV = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+  const SPK = '<path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z" fill="currentColor" fill-opacity=".18"/>';
+  const ICON_ON = SV + SPK + '<path class="w1" d="M15.2 9.2a4 4 0 0 1 0 5.6"/><path class="w2" d="M17.8 6.8a7.5 7.5 0 0 1 0 10.4"/></svg>';
+  const ICON_OFF = SV + SPK + '<path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>';
   let muted = false;
   try { muted = store.get('muted') === '1'; } catch (e) {}
   bgm.volume = 0.5;
 
   function paint() {
     const on = !bgm.paused && !muted;
-    btn.textContent = muted ? '🔇' : '🔊';
+    btn.innerHTML = muted ? ICON_OFF : ICON_ON;
     btn.classList.toggle('playing', on);
     btn.setAttribute('aria-pressed', String(muted));
   }
@@ -397,29 +373,86 @@ setLang(currentLang);
 /* ---------- Skip scratch ---------- */
 document.getElementById('skipScratch').addEventListener('click', () => { if (window.__revealDate) window.__revealDate(); });
 
-/* ---------- RSVP via WhatsApp ---------- */
+/* ---------- Scroll reveal ---------- */
 (function () {
-  const WA = '918540999094';
-  const form = document.getElementById('rsvpForm');
-  const nameEl = document.getElementById('rsvpName');
-  const err = document.getElementById('rsvpErr');
-  const row = document.getElementById('guestsRow');
-  const out = document.getElementById('gCount');
-  let guests = 1;
-  const paint = () => { out.textContent = guests; };
-  document.getElementById('gMinus').addEventListener('click', () => { guests = Math.max(1, guests - 1); paint(); });
-  document.getElementById('gPlus').addEventListener('click', () => { guests = Math.min(15, guests + 1); paint(); });
-  form.querySelectorAll('input[name="att"]').forEach(r => r.addEventListener('change', () => {
-    row.hidden = form.att.value === 'no';
-  }));
-  nameEl.addEventListener('input', () => { err.hidden = true; });
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = nameEl.value.trim();
-    if (!name) { err.hidden = false; nameEl.focus(); return; }
-    const note = document.getElementById('rsvpNote').value.trim();
-    const key = form.att.value === 'yes' ? 'rsvpMsgYes' : 'rsvpMsgNo';
-    const text = t(key, name, guests, note);
-    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-  });
+  const els = document.querySelectorAll('.block, footer');
+  els.forEach(el => el.classList.add('reveal'));
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  }), { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ---------- Falling rose petals ---------- */
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c = document.createElement('canvas');
+  c.id = 'petals'; document.body.appendChild(c);
+  const ctx = c.getContext('2d');
+  let W, H, dpr;
+  function resize() {
+    dpr = window.devicePixelRatio || 1;
+    W = innerWidth; H = innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize(); addEventListener('resize', resize);
+
+  const COLORS = [['#e8798f', '#a82c47'], ['#f2a1b2', '#c4566b'], ['#d9455f', '#8c1f38'], ['#f7c1cc', '#d9718a'], ['#c93a58', '#7d1a30']];
+  const COUNT = innerWidth < 600 ? 14 : 24;
+
+  function make(initial) {
+    const col = COLORS[Math.floor(Math.random() * COLORS.length)];
+    return {
+      x: Math.random() * W,
+      y: initial ? Math.random() * H : -30 - Math.random() * 200,
+      size: 9 + Math.random() * 12,
+      vy: 0.3 + Math.random() * 0.55,
+      sway: 0.35 + Math.random() * 0.8,
+      phase: Math.random() * Math.PI * 2,
+      freq: 0.01 + Math.random() * 0.015,
+      rot: Math.random() * Math.PI * 2,
+      vr: (Math.random() - .5) * 0.02,
+      flip: Math.random() * Math.PI * 2,
+      vf: 0.015 + Math.random() * 0.02,
+      col, t: 0
+    };
+  }
+  const petals = Array.from({ length: COUNT }, () => make(true));
+
+  function draw(p) {
+    const s = p.size;
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.scale(Math.cos(p.flip) * .8 + .2 * Math.sign(Math.cos(p.flip) || 1), 1); // 3D tumble
+    const g = ctx.createRadialGradient(0, s * .3, s * .1, 0, 0, s * 1.2);
+    g.addColorStop(0, p.col[0]); g.addColorStop(1, p.col[1]);
+    ctx.fillStyle = g;
+    ctx.globalAlpha = 0.92;
+    ctx.beginPath(); // rose petal: broad rounded top, pointed base
+    ctx.moveTo(0, s);
+    ctx.bezierCurveTo(-s * .9, s * .5, -s * 1.1, -s * .7, -s * .25, -s);
+    ctx.quadraticCurveTo(0, -s * .85, s * .25, -s);
+    ctx.bezierCurveTo(s * 1.1, -s * .7, s * .9, s * .5, 0, s);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth = .8;
+    ctx.beginPath(); ctx.moveTo(0, s * .8); ctx.quadraticCurveTo(0, 0, 0, -s * .6); ctx.stroke();
+    ctx.restore();
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < petals.length; i++) {
+      const p = petals[i];
+      p.t++;
+      p.y += p.vy;
+      p.x += Math.sin(p.t * p.freq + p.phase) * p.sway;
+      p.rot += p.vr; p.flip += p.vf;
+      if (p.y > H + 30 || p.x < -50 || p.x > W + 50) petals[i] = make(false);
+      draw(p);
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
 })();

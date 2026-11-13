@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QR code — Wedding invitation</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+body{font-family:Georgia,serif;background:#f1e4cd;color:#4a3a28;display:flex;justify-content:center;padding:2rem 1rem}
+.box{background:#fffaf0;border:1px solid #d9c3a0;border-radius:28px;padding:2rem;max-width:420px;width:100%;text-align:center}
+input{width:100%;box-sizing:border-box;padding:.7rem 1rem;border:1px solid #d9c3a0;border-radius:14px;font-size:1rem;margin:1rem 0}
+button{background:#9a3a52;color:#fff8ea;border:0;border-radius:30px;padding:.7rem 1.4rem;font-size:1rem;cursor:pointer;margin:.3rem}
+#qr{display:flex;justify-content:center;margin:1.2rem 0;min-height:260px}
+#qr img,#qr canvas{border:12px solid #fff;border-radius:8px}
+</style></head><body><div class="box">
+<h1>Invitation QR code</h1>
+<p>Paste the link where your invitation is hosted, then download the QR for the printed card.</p>
+<input id="url" type="url" placeholder="https://your-site.example.com">
+<button id="make">Generate</button><button id="dl" hidden>Download PNG</button>
+<div id="qr"></div></div>
+<script>
+const qr=document.getElementById('qr'),dl=document.getElementById('dl');
+document.getElementById('make').onclick=()=>{
+  const u=document.getElementById('url').value.trim();
+  if(!/^https?:\/\//.test(u)){alert('Enter a full link starting with https://');return}
+  qr.innerHTML='';
+  new QRCode(qr,{text:u,width:256,height:256,correctLevel:QRCode.CorrectLevel.H});
+  dl.hidden=false;
+};
+dl.onclick=()=>{
+  const c=qr.querySelector('canvas');if(!c)return;
+  const a=document.createElement('a');a.download='wedding-invitation-qr.png';a.href=c.toDataURL('image/png');a.click();
+};
+</script></body></html>

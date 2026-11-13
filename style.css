@@ -389,7 +389,7 @@ blockquote{position:relative;padding:0 .5rem}
 
 /* ================= MUSIC BUTTON ================= */
 .music{position:fixed;top:12px;left:12px;z-index:70;width:42px;height:42px;border-radius:50%;
-  border:1px solid var(--gold);background:rgba(251,245,233,.92);font-size:1.1rem;cursor:pointer;
+  border:1.5px solid var(--gold);background:radial-gradient(circle at 35% 30%,#fffaf0,#f1e4cd);color:var(--gold-d);display:grid;place-items:center;padding:0;cursor:pointer;
   box-shadow:0 4px 14px rgba(110,80,40,.25);transition:transform .2s}
 .music:hover{transform:scale(1.08)}
 .music.playing{animation:ring2 2.4s ease-out infinite}
@@ -447,3 +447,8 @@ blockquote{position:relative;padding:0 .5rem}
 @media (max-width:600px){
   .map iframe{height:200px}
 }
+
+.music svg{display:block}
+.music.playing .w1{animation:wave 1.2s ease-in-out infinite}
+.music.playing .w2{animation:wave 1.2s ease-in-out .25s infinite}
+@keyframes wave{0%,100%{opacity:.35}50%{opacity:1}}
