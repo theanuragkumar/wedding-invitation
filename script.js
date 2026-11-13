@@ -98,9 +98,10 @@ const I18N = {
     anurag: 'अनुराग'
   }
 };
+I18N.mr = {};
 /* ---------- Names / addresses ---------- */
 const currentSide = 'groom';
-const NM = { en: { g: 'Anurag', b: 'Lakshmi' }, hi: { g: 'अनुराग', b: 'लक्ष्मी' } };
+const NM = { en: { g: 'Anurag', b: 'Lakshmi' }, hi: { g: 'अनुराग', b: 'लक्ष्मी' }, mr: { g: 'अनुराग', b: 'लक्ष्मी' } };
 const pair = l => currentSide === 'bride' ? [NM[l].b, NM[l].g] : [NM[l].g, NM[l].b];
 Object.assign(I18N.en, {
   names: () => { const [a, b] = pair('en'); return `${a} <span>&amp;</span> ${b}`; },
@@ -124,19 +125,92 @@ Object.assign(I18N.hi, {
     return currentSide === 'bride' ? b + '<br>' + g : g + '<br>' + b;
   }
 });
+Object.assign(I18N.en, {
+    skip: 'Skip — reveal the date',
+    rsvpEyebrow: 'RSVP', rsvpTitle: 'Will You Join Us?', rsvpSub: 'Please let us know so we can plan',
+    rsvpName: 'Your name', rsvpNameErr: 'Please enter your name',
+    rsvpYes: 'Joyfully accept', rsvpNo: 'Regretfully decline',
+    rsvpGuests: 'Number of guests', rsvpNote: 'A message for the couple (optional)',
+    rsvpSend: '💬 Send RSVP on WhatsApp', rsvpHelp: 'Opens WhatsApp with your reply ready to send',
+    rsvpMsgYes: (n, g, note) => `Hello! This is ${n}. I will be delighted to attend the wedding of Anurag & Lakshmi on 2 December 2026. Guests: ${g}.` + (note ? `\n\n${note}` : ''),
+    rsvpMsgNo: (n, g, note) => `Hello! This is ${n}. I regret that I am unable to attend the wedding of Anurag & Lakshmi on 2 December 2026, but I send my love and blessings.` + (note ? `\n\n${note}` : '')
+});
+Object.assign(I18N.hi, {
+    skip: 'छोड़ें — तिथि दिखाएँ',
+    rsvpEyebrow: 'कृपया उत्तर दें', rsvpTitle: 'क्या आप हमारे साथ होंगे?', rsvpSub: 'कृपया हमें बताइए ताकि हम व्यवस्था कर सकें',
+    rsvpName: 'आपका नाम', rsvpNameErr: 'कृपया अपना नाम लिखें',
+    rsvpYes: 'सहर्ष स्वीकार', rsvpNo: 'खेद सहित असमर्थ',
+    rsvpGuests: 'अतिथियों की संख्या', rsvpNote: 'वर-वधू के लिए संदेश (वैकल्पिक)',
+    rsvpSend: '💬 व्हाट्सऐप पर उत्तर भेजें', rsvpHelp: 'व्हाट्सऐप में आपका उत्तर तैयार खुलेगा',
+    rsvpMsgYes: (n, g, note) => `नमस्ते! मैं ${n} हूँ। मैं 2 दिसंबर 2026 को अनुराग और लक्ष्मी के विवाह में सहर्ष उपस्थित रहूँगा/रहूँगी। अतिथि: ${g}।` + (note ? `\n\n${note}` : ''),
+    rsvpMsgNo: (n, g, note) => `नमस्ते! मैं ${n} हूँ। खेद है कि मैं 2 दिसंबर 2026 को अनुराग और लक्ष्मी के विवाह में उपस्थित नहीं हो पाऊँगा/पाऊँगी, परंतु मेरा प्रेम और आशीर्वाद आपके साथ है।` + (note ? `\n\n${note}` : '')
+});
+Object.assign(I18N.mr, {
+    title: 'अनुराग आणि लक्ष्मी — विवाह निमंत्रण',
+    introHint: 'आपल्याला एक निमंत्रण मिळाले आहे',
+    openAria: 'विवाह निमंत्रण उघडा',
+    tap: 'उघडण्यासाठी पाकिटावर टॅप करा',
+    blessing: 'श्री गणेशाच्या आशीर्वादाने आणि दोन्ही कुटुंबांसह, आपणास या मंगल विवाह सोहळ्यासाठी सादर आमंत्रित करीत आहोत',
+    saveDate: 'तारीख लक्षात ठेवा',
+    weddingDay: 'विवाहाचा दिवस',
+    scratchSub: 'तारीख पाहण्यासाठी कार्ड खरवडा',
+    scratchHint: '✦ येथे खरवडा ✦',
+    weddingDate: 'विवाहाची तारीख',
+    dateBig: '2 डिसेंबर 2026',
+    dateSub: 'बुधवार · सायं. 6:00 वा.',
+    days: 'दिवस', hours: 'तास', minutes: 'मिनिटे', seconds: 'सेकंद',
+    celebrations: 'सोहळे',
+    order: 'दिवसाचा कार्यक्रम',
+    haldi: 'हळद आणि मेहंदी',
+    haldiWhen: 'मंगळवार, 1 डिसेंबर 2026 रोजी सायं. 5:00 वा.',
+    residences: 'आपापल्या निवासस्थानी',
+    groomDir: 'वराच्या घरी जाण्याचा मार्ग', brideDir: 'वधूच्या घरी जाण्याचा मार्ग',
+    gcal: '📅 गूगल कॅलेंडर',
+    ceremony: 'विवाह सोहळा',
+    ceremonyWhen: 'बुधवार, 2 डिसेंबर 2026 रोजी सायं. 6:00 वा.',
+    venue: 'चंद्रभागा लॉन्स',
+    road: 'त्र्यंबकेश्वर रोड',
+    getDir: 'मार्ग पाहा',
+    awaiting: 'आपल्या प्रतीक्षेत',
+    blessings: 'प्रेम आणि आशीर्वादांसह',
+    quote: '“आनंदाने भरलेल्या अंतःकरणाने, आम्ही आपल्या स्नेहपूर्ण उपस्थितीची वाट पाहत आहोत, जेणेकरून आमचा सोहळा परिपूर्ण होईल.”',
+    where: 'आमचा सोहळा येथे',
+    mapShow: '📍 नकाशा दाखवा', mapHide: '✕ नकाशा लपवा',
+    mapNote: 'गूगल मॅप्स याच पानावर उघडेल',
+    getDirArrow: 'मार्ग पाहा ↗',
+    skip: 'वगळा — तारीख दाखवा',
+    rsvpEyebrow: 'कृपया कळवा', rsvpTitle: 'आपण येणार का?', rsvpSub: 'कृपया आम्हाला कळवा, म्हणजे आम्हाला व्यवस्था करता येईल',
+    rsvpName: 'आपले नाव', rsvpNameErr: 'कृपया आपले नाव लिहा',
+    rsvpYes: 'आनंदाने येणार', rsvpNo: 'क्षमस्व, येता येणार नाही',
+    rsvpGuests: 'पाहुण्यांची संख्या', rsvpNote: 'वधू-वरांसाठी संदेश (ऐच्छिक)',
+    rsvpSend: '💬 व्हॉट्सअ‍ॅपवर कळवा', rsvpHelp: 'व्हॉट्सअ‍ॅपमध्ये आपले उत्तर तयार उघडेल',
+    rsvpMsgYes: (n, g, note) => `नमस्कार! मी ${n}. 2 डिसेंबर 2026 रोजी अनुराग आणि लक्ष्मी यांच्या विवाह सोहळ्याला मी आनंदाने उपस्थित राहीन. पाहुणे: ${g}.` + (note ? `\n\n${note}` : ''),
+    rsvpMsgNo: (n, g, note) => `नमस्कार! मी ${n}. क्षमस्व, 2 डिसेंबर 2026 रोजी अनुराग आणि लक्ष्मी यांच्या विवाह सोहळ्याला मला उपस्थित राहता येणार नाही, परंतु माझ्या शुभेच्छा आणि आशीर्वाद आपल्या सोबत आहेत.` + (note ? `\n\n${note}` : '')
+  });
+Object.assign(I18N.mr, {
+  names: () => { const [a, b] = pair('mr'); return `${a} <span>&amp;</span> ${b}`; },
+  names2: () => { const [a, b] = pair('mr'); return `${a} &amp; ${b}`; },
+  hash: () => '#Anu&amp;Lak',
+  invite: () => { const [a, b] = pair('mr'); return `${a} आणि ${b} यांच्या आनंदात सहभागी होण्यासाठी आणि पती-पत्नी म्हणून सुरू होणाऱ्या त्यांच्या नव्या जीवनप्रवासाला आशीर्वाद देण्यासाठी आपणास आनंदाने आमंत्रित करतात. आपली उपस्थिती आणि शुभेच्छा दोन्ही कुटुंबांसाठी हे सोहळे खऱ्या अर्थाने संस्मरणीय करतील.`; },
+  haldiAddr: () => '<b>वराचे निवासस्थान:</b> ई-35, रेल्वे क्वार्टर, सिक्स बंगलो, इगतपुरी<br><b>वधूचे निवासस्थान:</b> सातपूर, नाशिक'
+});
 let currentLang = 'en';
 try {
   const saved = store.get('lang');
-  if (saved === 'en' || saved === 'hi') currentLang = saved;
-  else if ((navigator.language || '').toLowerCase().startsWith('hi')) currentLang = 'hi';
+  if (saved === 'en' || saved === 'hi' || saved === 'mr') currentLang = saved;
+  else {
+    const nl = (navigator.language || '').toLowerCase();
+    if (nl.startsWith('hi')) currentLang = 'hi'; else if (nl.startsWith('mr')) currentLang = 'mr';
+  }
 } catch (e) {}
-const t = k => { const v = I18N[currentLang][k]; return typeof v === 'function' ? v() : v; };
+const t = (k, ...a) => { const v = I18N[currentLang][k]; return typeof v === 'function' ? v(...a) : v; };
 function setLang(l) {
   currentLang = l;
   try { store.set('lang', l); } catch (e) {}
   document.documentElement.lang = l;
   document.title = t('title');
   document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); el.setAttribute('aria-label', t(el.dataset.i18nPh)); });
   document.querySelectorAll('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
   document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
   if (typeof updateMapBtn === 'function') updateMapBtn();
@@ -190,6 +264,7 @@ function initScratch() {
   ctx.lineWidth = 34; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
 
   let drawing = false, last = null, done = false, moves = 0;
+  window.__revealDate = () => { if (done) return; done = true; canvas.classList.add('done'); const sk = document.getElementById('skipScratch'); if (sk) sk.hidden = true; };
   const pos = e => {
     const r = canvas.getBoundingClientRect();
     return { x: e.clientX - r.left, y: e.clientY - r.top };
@@ -214,7 +289,7 @@ function initScratch() {
     let clear = 0, total = 0;
     for (let i = 3; i < data.length; i += 64) { total++; if (data[i] === 0) clear++; }
     if (clear / total > 0.5) {
-      done = true; canvas.classList.add('done');
+      window.__revealDate();
     }
   }
 }
@@ -370,5 +445,34 @@ setLang(currentLang);
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) bgm.pause(); else if (!muted && bgm.currentTime > 0) bgm.play().catch(() => {});
+  });
+})();
+/* ---------- Skip scratch ---------- */
+document.getElementById('skipScratch').addEventListener('click', () => { if (window.__revealDate) window.__revealDate(); });
+
+/* ---------- RSVP via WhatsApp ---------- */
+(function () {
+  const WA = '918540999094';
+  const form = document.getElementById('rsvpForm');
+  const nameEl = document.getElementById('rsvpName');
+  const err = document.getElementById('rsvpErr');
+  const row = document.getElementById('guestsRow');
+  const out = document.getElementById('gCount');
+  let guests = 1;
+  const paint = () => { out.textContent = guests; };
+  document.getElementById('gMinus').addEventListener('click', () => { guests = Math.max(1, guests - 1); paint(); });
+  document.getElementById('gPlus').addEventListener('click', () => { guests = Math.min(15, guests + 1); paint(); });
+  form.querySelectorAll('input[name="att"]').forEach(r => r.addEventListener('change', () => {
+    row.hidden = form.att.value === 'no';
+  }));
+  nameEl.addEventListener('input', () => { err.hidden = true; });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = nameEl.value.trim();
+    if (!name) { err.hidden = false; nameEl.focus(); return; }
+    const note = document.getElementById('rsvpNote').value.trim();
+    const key = form.att.value === 'yes' ? 'rsvpMsgYes' : 'rsvpMsgNo';
+    const text = t(key, name, guests, note);
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
   });
 })();

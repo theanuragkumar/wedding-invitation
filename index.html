@@ -15,6 +15,7 @@
 <meta name="twitter:description" content="You are invited! 2 December 2026 · Nashik">
 <meta name="twitter:image" content="assets/og-image.jpg">
 <meta name="theme-color" content="#f1e4cd">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <title>Anurag & Lakshmi — Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi:ital@0;1&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
@@ -28,6 +29,7 @@
 <div class="lang" role="group" aria-label="Language">
   <button type="button" data-lang="en" class="on">English</button>
   <button type="button" data-lang="hi">हिन्दी</button>
+  <button type="button" data-lang="mr">मराठी</button>
 </div>
 
 <!-- ENVELOPE SCREEN -->
@@ -70,6 +72,7 @@
       <canvas id="scratch" aria-label="Scratch card"></canvas>
       <div class="scratch-hint" data-i18n="scratchHint">✦ Scratch here ✦</div>
     </div>
+    <button type="button" class="skip" id="skipScratch" data-i18n="skip">Skip — reveal the date</button>
 
     <div class="countdown" id="countdown">
       <div><b id="cd-d">--</b><span data-i18n="days">Days</span></div>
@@ -122,6 +125,31 @@
     <p class="tiny" data-i18n="mapNote">Opens Google Maps inside this page</p>
     <div class="map" id="map" hidden></div>
     <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Chandrabhaga+Lawns+Trimbakeshwar+Road+Nashik" data-i18n="getDirArrow">Get directions ↗</a>
+  </section>
+
+  <section class="block rsvp">
+    <p class="eyebrow" data-i18n="rsvpEyebrow">RSVP</p>
+    <h2 data-i18n="rsvpTitle">Will You Join Us?</h2>
+    <p class="muted" data-i18n="rsvpSub">Please let us know so we can plan</p>
+    <form id="rsvpForm" novalidate>
+      <input id="rsvpName" type="text" autocomplete="name" data-i18n-ph="rsvpName" placeholder="Your name" aria-label="Your name">
+      <p class="err" id="rsvpErr" hidden data-i18n="rsvpNameErr">Please enter your name</p>
+      <div class="choice">
+        <label><input type="radio" name="att" value="yes" checked><span data-i18n="rsvpYes">Joyfully accept</span></label>
+        <label><input type="radio" name="att" value="no"><span data-i18n="rsvpNo">Regretfully decline</span></label>
+      </div>
+      <div class="guests" id="guestsRow">
+        <span data-i18n="rsvpGuests">Number of guests</span>
+        <div class="stepper">
+          <button type="button" id="gMinus" aria-label="Fewer guests">−</button>
+          <output id="gCount">1</output>
+          <button type="button" id="gPlus" aria-label="More guests">+</button>
+        </div>
+      </div>
+      <textarea id="rsvpNote" rows="2" data-i18n-ph="rsvpNote" placeholder="A message for the couple (optional)" aria-label="Message"></textarea>
+      <button class="btn" type="submit" data-i18n="rsvpSend">💬 Send RSVP on WhatsApp</button>
+      <p class="tiny" data-i18n="rsvpHelp">Opens WhatsApp with your reply ready to send</p>
+    </form>
   </section>
 
   <footer>
