@@ -98,10 +98,9 @@ const I18N = {
     anurag: 'अनुराग'
   }
 };
-I18N.mr = {};
 /* ---------- Names / addresses ---------- */
 const currentSide = 'groom';
-const NM = { en: { g: 'Anurag', b: 'Lakshmi' }, hi: { g: 'अनुराग', b: 'लक्ष्मी' }, mr: { g: 'अनुराग', b: 'लक्ष्मी' } };
+const NM = { en: { g: 'Anurag', b: 'Lakshmi' }, hi: { g: 'अनुराग', b: 'लक्ष्मी' } };
 const pair = l => currentSide === 'bride' ? [NM[l].b, NM[l].g] : [NM[l].g, NM[l].b];
 Object.assign(I18N.en, {
   names: () => { const [a, b] = pair('en'); return `${a} <span>&amp;</span> ${b}`; },
@@ -145,63 +144,11 @@ Object.assign(I18N.hi, {
     rsvpMsgYes: (n, g, note) => `नमस्ते! मैं ${n} हूँ। मैं 2 दिसंबर 2026 को अनुराग और लक्ष्मी के विवाह में सहर्ष उपस्थित रहूँगा/रहूँगी। अतिथि: ${g}।` + (note ? `\n\n${note}` : ''),
     rsvpMsgNo: (n, g, note) => `नमस्ते! मैं ${n} हूँ। खेद है कि मैं 2 दिसंबर 2026 को अनुराग और लक्ष्मी के विवाह में उपस्थित नहीं हो पाऊँगा/पाऊँगी, परंतु मेरा प्रेम और आशीर्वाद आपके साथ है।` + (note ? `\n\n${note}` : '')
 });
-Object.assign(I18N.mr, {
-    title: 'अनुराग आणि लक्ष्मी — विवाह निमंत्रण',
-    introHint: 'आपल्याला एक निमंत्रण मिळाले आहे',
-    openAria: 'विवाह निमंत्रण उघडा',
-    tap: 'उघडण्यासाठी पाकिटावर टॅप करा',
-    blessing: 'श्री गणेशाच्या आशीर्वादाने आणि दोन्ही कुटुंबांसह, आपणास या मंगल विवाह सोहळ्यासाठी सादर आमंत्रित करीत आहोत',
-    saveDate: 'तारीख लक्षात ठेवा',
-    weddingDay: 'विवाहाचा दिवस',
-    scratchSub: 'तारीख पाहण्यासाठी कार्ड खरवडा',
-    scratchHint: '✦ येथे खरवडा ✦',
-    weddingDate: 'विवाहाची तारीख',
-    dateBig: '2 डिसेंबर 2026',
-    dateSub: 'बुधवार · सायं. 6:00 वा.',
-    days: 'दिवस', hours: 'तास', minutes: 'मिनिटे', seconds: 'सेकंद',
-    celebrations: 'सोहळे',
-    order: 'दिवसाचा कार्यक्रम',
-    haldi: 'हळद आणि मेहंदी',
-    haldiWhen: 'मंगळवार, 1 डिसेंबर 2026 रोजी सायं. 5:00 वा.',
-    residences: 'आपापल्या निवासस्थानी',
-    groomDir: 'वराच्या घरी जाण्याचा मार्ग', brideDir: 'वधूच्या घरी जाण्याचा मार्ग',
-    gcal: '📅 गूगल कॅलेंडर',
-    ceremony: 'विवाह सोहळा',
-    ceremonyWhen: 'बुधवार, 2 डिसेंबर 2026 रोजी सायं. 6:00 वा.',
-    venue: 'चंद्रभागा लॉन्स',
-    road: 'त्र्यंबकेश्वर रोड',
-    getDir: 'मार्ग पाहा',
-    awaiting: 'आपल्या प्रतीक्षेत',
-    blessings: 'प्रेम आणि आशीर्वादांसह',
-    quote: '“आनंदाने भरलेल्या अंतःकरणाने, आम्ही आपल्या स्नेहपूर्ण उपस्थितीची वाट पाहत आहोत, जेणेकरून आमचा सोहळा परिपूर्ण होईल.”',
-    where: 'आमचा सोहळा येथे',
-    mapShow: '📍 नकाशा दाखवा', mapHide: '✕ नकाशा लपवा',
-    mapNote: 'गूगल मॅप्स याच पानावर उघडेल',
-    getDirArrow: 'मार्ग पाहा ↗',
-    skip: 'वगळा — तारीख दाखवा',
-    rsvpEyebrow: 'कृपया कळवा', rsvpTitle: 'आपण येणार का?', rsvpSub: 'कृपया आम्हाला कळवा, म्हणजे आम्हाला व्यवस्था करता येईल',
-    rsvpName: 'आपले नाव', rsvpNameErr: 'कृपया आपले नाव लिहा',
-    rsvpYes: 'आनंदाने येणार', rsvpNo: 'क्षमस्व, येता येणार नाही',
-    rsvpGuests: 'पाहुण्यांची संख्या', rsvpNote: 'वधू-वरांसाठी संदेश (ऐच्छिक)',
-    rsvpSend: '💬 व्हॉट्सअ‍ॅपवर कळवा', rsvpHelp: 'व्हॉट्सअ‍ॅपमध्ये आपले उत्तर तयार उघडेल',
-    rsvpMsgYes: (n, g, note) => `नमस्कार! मी ${n}. 2 डिसेंबर 2026 रोजी अनुराग आणि लक्ष्मी यांच्या विवाह सोहळ्याला मी आनंदाने उपस्थित राहीन. पाहुणे: ${g}.` + (note ? `\n\n${note}` : ''),
-    rsvpMsgNo: (n, g, note) => `नमस्कार! मी ${n}. क्षमस्व, 2 डिसेंबर 2026 रोजी अनुराग आणि लक्ष्मी यांच्या विवाह सोहळ्याला मला उपस्थित राहता येणार नाही, परंतु माझ्या शुभेच्छा आणि आशीर्वाद आपल्या सोबत आहेत.` + (note ? `\n\n${note}` : '')
-  });
-Object.assign(I18N.mr, {
-  names: () => { const [a, b] = pair('mr'); return `${a} <span>&amp;</span> ${b}`; },
-  names2: () => { const [a, b] = pair('mr'); return `${a} &amp; ${b}`; },
-  hash: () => '#Anu&amp;Lak',
-  invite: () => { const [a, b] = pair('mr'); return `${a} आणि ${b} यांच्या आनंदात सहभागी होण्यासाठी आणि पती-पत्नी म्हणून सुरू होणाऱ्या त्यांच्या नव्या जीवनप्रवासाला आशीर्वाद देण्यासाठी आपणास आनंदाने आमंत्रित करतात. आपली उपस्थिती आणि शुभेच्छा दोन्ही कुटुंबांसाठी हे सोहळे खऱ्या अर्थाने संस्मरणीय करतील.`; },
-  haldiAddr: () => '<b>वराचे निवासस्थान:</b> ई-35, रेल्वे क्वार्टर, सिक्स बंगलो, इगतपुरी<br><b>वधूचे निवासस्थान:</b> सातपूर, नाशिक'
-});
 let currentLang = 'en';
 try {
   const saved = store.get('lang');
-  if (saved === 'en' || saved === 'hi' || saved === 'mr') currentLang = saved;
-  else {
-    const nl = (navigator.language || '').toLowerCase();
-    if (nl.startsWith('hi')) currentLang = 'hi'; else if (nl.startsWith('mr')) currentLang = 'mr';
-  }
+  if (saved === 'en' || saved === 'hi') currentLang = saved;
+  else if ((navigator.language || '').toLowerCase().startsWith('hi')) currentLang = 'hi';
 } catch (e) {}
 const t = (k, ...a) => { const v = I18N[currentLang][k]; return typeof v === 'function' ? v(...a) : v; };
 function setLang(l) {
