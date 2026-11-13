@@ -3,12 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="You are invited to the wedding of Anurag &amp; Lakshmi — 2 December 2026, Nashik. Tap the envelope to open your invitation.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anurag &amp; Lakshmi — Wedding Invitation">
+<meta property="og:description" content="You are invited! 2 December 2026 · Chandrabhaga Lawns, Nashik. Tap the envelope to open your invitation.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anurag &amp; Lakshmi — Wedding Invitation">
+<meta name="twitter:description" content="You are invited! 2 December 2026 · Nashik">
+<meta name="twitter:image" content="assets/og-image.jpg">
+<meta name="theme-color" content="#f1e4cd">
 <title>Anurag & Lakshmi — Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi:ital@0;1&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<audio id="bgm" src="assets/wedding-song.mp3" loop preload="auto"></audio>
+<button type="button" id="musicBtn" class="music" aria-label="Toggle music" title="Music on/off" hidden>🔊</button>
 
 <div class="lang" role="group" aria-label="Language">
   <button type="button" data-lang="en" class="on">English</button>
@@ -38,7 +53,7 @@
     <h1 class="names script" data-i18n="names">Anurag <span>&amp;</span> Lakshmi</h1>
     <div class="divider"><i></i><b>❖</b><i></i></div>
     <p class="invite-text" data-i18n="invite">Anurag and Lakshmi joyfully invite you to share in their happiness and bless them as they begin their new journey together as husband and wife. Your presence and warm wishes will make these celebrations truly memorable for both families.</p>
-    <p class="hashtag">#Anu&amp;Lak</p>
+    <p class="hashtag" data-i18n="hash">#Anu&amp;Lak</p>
   </header>
 
   <section class="block">
@@ -75,8 +90,8 @@
       <p class="addr" data-i18n="haldiAddr"><b>Groom's Residence:</b> E-35, Railway Quarter, Six Banglow, Igatpuri<br>
          <b>Bride's Residence:</b> Satpur, Nashik</p>
       <div class="btns">
-        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Six+Banglow+Igatpuri" data-i18n="groomDir">Groom's directions</a>
-        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Satpur+Nashik" data-i18n="brideDir">Bride's directions</a>
+        <a class="btn dir-groom" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Six+Banglow+Igatpuri" data-i18n="groomDir">Groom's directions</a>
+        <a class="btn dir-bride" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Satpur+Nashik" data-i18n="brideDir">Bride's directions</a>
         <a class="btn ghost" id="gcal-haldi" target="_blank" rel="noopener" href="#" data-i18n="gcal">📅 Google Calendar</a>
       </div>
     </article>
@@ -107,13 +122,6 @@
     <p class="tiny" data-i18n="mapNote">Opens Google Maps inside this page</p>
     <div class="map" id="map" hidden></div>
     <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Chandrabhaga+Lawns+Trimbakeshwar+Road+Nashik" data-i18n="getDirArrow">Get directions ↗</a>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow" data-i18n="good">Good to Know</p>
-    <h2 data-i18n="details">Details</h2>
-    <p data-i18n="queries">For queries, contact</p>
-    <p class="contact"><strong data-i18n="anurag">Anurag</strong> · <a href="tel:+918540999094">8540999094</a></p>
   </section>
 
   <footer>

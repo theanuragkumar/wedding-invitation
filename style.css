@@ -382,3 +382,18 @@ blockquote{position:relative;padding:0 .5rem}
 .event.reveal-r{opacity:0;transform:translateX(40px);transition:1s}
 .event.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.twinkle,.spark{display:none}}
+
+/* fix: keep the fade-in AND the glow on the couple frame */
+.card .hero .couple{animation:fadeUp .9s ease forwards,glowRing 4s ease-in-out infinite}
+.card .hero .names{animation:fadeUp .9s ease forwards,shine 6s linear infinite}
+
+/* ================= MUSIC BUTTON ================= */
+.music{position:fixed;top:12px;left:12px;z-index:70;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--gold);background:rgba(251,245,233,.92);font-size:1.1rem;cursor:pointer;
+  box-shadow:0 4px 14px rgba(110,80,40,.25);transition:transform .2s}
+.music:hover{transform:scale(1.08)}
+.music.playing{animation:ring2 2.4s ease-out infinite}
+@keyframes ring2{0%{box-shadow:0 0 0 0 rgba(176,141,87,.55),0 4px 14px rgba(110,80,40,.25)}100%{box-shadow:0 0 0 14px rgba(176,141,87,0),0 4px 14px rgba(110,80,40,.25)}}
+
+.card:not(.hidden) .hero > *:nth-child(7){animation-delay:1.6s}
+.intro{gap:1rem !important}

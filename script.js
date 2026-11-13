@@ -1,3 +1,16 @@
+/* ---------- Persistent preferences (localStorage with cookie fallback) ---------- */
+const store = {
+  get(k) {
+    try { const v = localStorage.getItem(k); if (v !== null) return v; } catch (e) {}
+    const m = document.cookie.match(new RegExp('(?:^|; )' + k + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : null;
+  },
+  set(k, v) {
+    try { localStorage.setItem(k, v); } catch (e) {}
+    document.cookie = k + '=' + encodeURIComponent(v) + '; max-age=31536000; path=/; SameSite=Lax';
+  }
+};
+
 /* ---------- Language (English / Hindi) ---------- */
 const I18N = {
   en: {
@@ -85,16 +98,42 @@ const I18N = {
     anurag: 'अनुराग'
   }
 };
+/* ---------- Names / addresses ---------- */
+const currentSide = 'groom';
+const NM = { en: { g: 'Anurag', b: 'Lakshmi' }, hi: { g: 'अनुराग', b: 'लक्ष्मी' } };
+const pair = l => currentSide === 'bride' ? [NM[l].b, NM[l].g] : [NM[l].g, NM[l].b];
+Object.assign(I18N.en, {
+  names: () => { const [a, b] = pair('en'); return `${a} <span>&amp;</span> ${b}`; },
+  names2: () => { const [a, b] = pair('en'); return `${a} &amp; ${b}`; },
+  hash: () => currentSide === 'bride' ? '#Lak&amp;Anu' : '#Anu&amp;Lak',
+  invite: () => { const [a, b] = pair('en'); return `${a} and ${b} joyfully invite you to share in their happiness and bless them as they begin their new journey together as husband and wife. Your presence and warm wishes will make these celebrations truly memorable for both families.`; },
+  haldiAddr: () => {
+    const g = "<b>Groom's Residence:</b> E-35, Railway Quarter, Six Banglow, Igatpuri";
+    const b = "<b>Bride's Residence:</b> Satpur, Nashik";
+    return currentSide === 'bride' ? b + '<br>' + g : g + '<br>' + b;
+  }
+});
+Object.assign(I18N.hi, {
+  names: () => { const [a, b] = pair('hi'); return `${a} <span>&amp;</span> ${b}`; },
+  names2: () => { const [a, b] = pair('hi'); return `${a} &amp; ${b}`; },
+  hash: () => currentSide === 'bride' ? '#Lak&amp;Anu' : '#Anu&amp;Lak',
+  invite: () => { const [a, b] = pair('hi'); return `${a} और ${b} अपनी खुशियों में सहभागी बनने और पति-पत्नी के रूप में नए जीवन की शुरुआत पर उन्हें आशीर्वाद देने के लिए आपको हर्षपूर्वक आमंत्रित करते हैं। आपकी उपस्थिति और शुभकामनाएँ दोनों परिवारों के लिए इन उत्सवों को सचमुच यादगार बना देंगी।`; },
+  haldiAddr: () => {
+    const g = '<b>वर पक्ष का निवास:</b> ई-35, रेलवे क्वार्टर, सिक्स बंगलो, इगतपुरी';
+    const b = '<b>वधू पक्ष का निवास:</b> सातपुर, नाशिक';
+    return currentSide === 'bride' ? b + '<br>' + g : g + '<br>' + b;
+  }
+});
 let currentLang = 'en';
 try {
-  const saved = localStorage.getItem('lang');
+  const saved = store.get('lang');
   if (saved === 'en' || saved === 'hi') currentLang = saved;
   else if ((navigator.language || '').toLowerCase().startsWith('hi')) currentLang = 'hi';
 } catch (e) {}
-const t = k => I18N[currentLang][k];
+const t = k => { const v = I18N[currentLang][k]; return typeof v === 'function' ? v() : v; };
 function setLang(l) {
   currentLang = l;
-  try { localStorage.setItem('lang', l); } catch (e) {}
+  try { store.set('lang', l); } catch (e) {}
   document.documentElement.lang = l;
   document.title = t('title');
   document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
@@ -296,5 +335,40 @@ setLang(currentLang);
       if (en.isIntersecting) { el.classList.add('in'); io.disconnect(); }
     }), { threshold: .15 });
     io.observe(el);
+  });
+})();
+
+/* ---------- Background music (starts on envelope tap, user can mute) ---------- */
+(function () {
+  const bgm = document.getElementById('bgm');
+  const btn = document.getElementById('musicBtn');
+  let muted = false;
+  try { muted = store.get('muted') === '1'; } catch (e) {}
+  bgm.volume = 0.5;
+
+  function paint() {
+    const on = !bgm.paused && !muted;
+    btn.textContent = muted ? '🔇' : '🔊';
+    btn.classList.toggle('playing', on);
+    btn.setAttribute('aria-pressed', String(muted));
+  }
+  function start() {
+    if (muted) { paint(); return; }
+    bgm.play().then(paint).catch(paint);
+  }
+  bgm.addEventListener('error', () => { btn.hidden = true; });
+  bgm.addEventListener('canplay', () => { btn.hidden = false; paint(); }, { once: true });
+
+  // browsers block autoplay, so the tap on the envelope starts the song
+  document.getElementById('envelope').addEventListener('click', start, { once: true });
+
+  btn.addEventListener('click', () => {
+    muted = !muted;
+    try { store.set('muted', muted ? '1' : '0'); } catch (e) {}
+    if (muted) bgm.pause(); else bgm.play().catch(() => {});
+    paint();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) bgm.pause(); else if (!muted && bgm.currentTime > 0) bgm.play().catch(() => {});
   });
 })();
