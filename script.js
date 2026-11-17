@@ -32,7 +32,7 @@ const I18N = {
     days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds',
     celebrations: 'Celebrations',
     order: 'Order of the Day',
-    haldi: 'Haldi &amp; Mehdi',
+    haldi: 'Haldi &amp; Mehndi',
     haldiWhen: 'Tuesday, 1 December 2026 at 5:00 PM onwards',
     residences: 'At Respective Residences',
     gcal: '📅 Google Calendar',
@@ -240,10 +240,10 @@ const EVENTS = {
     details: 'Wedding ceremony of Lakshmi & Anurag.'
   },
   haldi: {
-    title: 'Lakshmi & Anurag — Haldi & Mehdi',
+    title: 'Lakshmi & Anurag — Haldi & Mehndi',
     start: '20261201T113000Z', end: '20261201T143000Z', // 17:00–20:00 IST
     location: 'At respective residences',
-    details: 'Haldi & Mehdi at respective residences.'
+    details: 'Haldi & Mehndi at respective residences.'
   }
 };
 function gcalUrl(e) {
