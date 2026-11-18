@@ -28,16 +28,18 @@ const I18N = {
     scratchHint: '✦ Scratch here ✦',
     weddingDate: 'The Wedding Date',
     dateBig: '2 December 2026',
-    dateSub: 'Wednesday · 6:00 PM onwards',
+    dateSub: 'Wednesday · 7:00 PM onwards',
     days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds',
     celebrations: 'Celebrations',
     order: 'Order of the Day',
     haldi: 'Haldi &amp; Mehndi',
-    haldiWhen: 'Tuesday, 1 December 2026 at 5:00 PM onwards',
+    haldiWhen: 'Monday, 30 November &amp; Tuesday, 1 December 2026',
     residences: 'At Respective Residences',
     gcal: '📅 Google Calendar',
     ceremony: 'Wedding Ceremony',
-    ceremonyWhen: 'Wednesday, 2 December 2026 at 6:00 PM onwards',
+    ceremonyWhen: 'Wednesday, 2 December 2026 at 7:00 PM onwards',
+    reception: 'Reception',
+    receptionWhen: 'Thursday, 3 December 2026 at 7:00 PM onwards',
     venue: 'Chandrabhaga Lawns',
     road: 'Trimbakeshwar Road',
     getDir: 'Get directions',
@@ -68,16 +70,18 @@ const I18N = {
     scratchHint: '✦ यहाँ स्क्रैच करें ✦',
     weddingDate: 'विवाह की तिथि',
     dateBig: '2 दिसंबर 2026',
-    dateSub: 'बुधवार · सायं 6:00 बजे से',
+    dateSub: 'बुधवार · सायं 7:00 बजे से',
     days: 'दिन', hours: 'घंटे', minutes: 'मिनट', seconds: 'सेकंड',
     celebrations: 'उत्सव',
     order: 'दिन का कार्यक्रम',
     haldi: 'हल्दी और मेहंदी',
-    haldiWhen: 'मंगलवार, 1 दिसंबर 2026 को सायं 5:00 बजे से',
+    haldiWhen: 'सोमवार, 30 नवंबर और मंगलवार, 1 दिसंबर 2026',
     residences: 'अपने-अपने निवास पर',
     gcal: '📅 गूगल कैलेंडर',
     ceremony: 'विवाह समारोह',
-    ceremonyWhen: 'बुधवार, 2 दिसंबर 2026 को सायं 6:00 बजे से',
+    ceremonyWhen: 'बुधवार, 2 दिसंबर 2026 को सायं 7:00 बजे से',
+    reception: 'स्वागत समारोह',
+    receptionWhen: 'गुरुवार, 3 दिसंबर 2026 को सायं 7:00 बजे से',
     venue: 'चंद्रभागा लॉन्स',
     road: 'त्र्यंबकेश्वर रोड',
     getDir: 'दिशा-निर्देश पाएँ',
@@ -216,7 +220,7 @@ function initScratch() {
 }
 
 /* ---------- Countdown (IST) ---------- */
-const WEDDING = new Date('2026-12-02T18:00:00+05:30');
+const WEDDING = new Date('2026-12-02T19:00:00+05:30');
 const pad = n => String(n).padStart(2, '0');
 function tick() {
   let diff = Math.max(0, WEDDING - Date.now());
@@ -235,13 +239,19 @@ tick(); setInterval(tick, 1000);
 const EVENTS = {
   wedding: {
     title: 'Lakshmi & Anurag — Wedding Ceremony',
-    start: '20261202T123000Z', end: '20261202T153000Z', // 18:00–21:00 IST
+    start: '20261202T133000Z', end: '20261202T163000Z', // 19:00–22:00 IST
     location: 'Chandrabhaga Lawns, Trimbakeshwar Road, Nashik',
     details: 'Wedding ceremony of Lakshmi & Anurag.'
   },
+  reception: {
+    title: 'Lakshmi & Anurag — Reception',
+    start: '20261203T133000Z', end: '20261203T163000Z', // 19:00–22:00 IST
+    location: '',
+    details: 'Reception of Lakshmi & Anurag.'
+  },
   haldi: {
     title: 'Lakshmi & Anurag — Haldi & Mehndi',
-    start: '20261201T113000Z', end: '20261201T143000Z', // 17:00–20:00 IST
+    start: '20261130', end: '20261202', // all-day: 30 Nov – 1 Dec
     location: 'At respective residences',
     details: 'Haldi & Mehndi at respective residences.'
   }
@@ -254,6 +264,7 @@ function gcalUrl(e) {
   return 'https://calendar.google.com/calendar/render?' + p;
 }
 document.getElementById('gcal-wedding').href = gcalUrl(EVENTS.wedding);
+document.getElementById('gcal-reception').href = gcalUrl(EVENTS.reception);
 document.getElementById('gcal-haldi').href = gcalUrl(EVENTS.haldi);
 
 /* ---------- Map ---------- */

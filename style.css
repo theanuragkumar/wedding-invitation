@@ -360,6 +360,7 @@ html[lang="hi"] .scratch-under strong{font-size:1.7rem}
   background:linear-gradient(135deg,#fbf0d4,#e5c98a);border:2px solid var(--gold);box-shadow:0 4px 10px rgba(120,90,50,.3)}
 .ev-haldi::before{content:"🌼"}
 .ev-wed::before{content:"💍"}
+.ev-rec::before{content:"🥂"}
 .event{margin-top:2rem !important}
 
 /* quote */
